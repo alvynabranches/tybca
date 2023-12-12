@@ -3,8 +3,8 @@ admin(id[pk], username, hash, phone)
 tiatr(id[pk], name, amount)
 hall(id[pk], name, location, lat_long)
 seat(id[pk], seat_number, hall_id)
-tiatr_venue(id[pk], tiatr_id, hall_id, date, time, status[O]={on_time[d], delayed, canceled})
-booking(id[pk], tiatr_venue_id, seat_id)
+show(id[pk], tiatr_id, hall_id, date, time, status[O]={on_time[d], delayed, canceled})
+booking(id[pk], show_id, seat_id)
 payment(id[pk], booking_id, payment_method, payment_status, transaction_id)
 
 actors(id[pk], name, ...)[O]
