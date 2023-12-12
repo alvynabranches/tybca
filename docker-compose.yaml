@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+    container_name: app
+    environment:
+      - DB_URL=http://example.com
+    env_file:
+      - .env
+    ports:
+      - 5000:8000
+    volumes:
+      - ./:/app
+  
+  db1:
+    image: cockroachdb/cockroach:v23.1.12
+    container_name: db1
+    ports:
+      - 20001:26357
+      - 8081:8081
+      - 25001:26258
+    command: start --advertise-addr=db1:26357 --http-addr=db1:8081 --listen-addr=db1:26357 --sql-addr=db1:26258 --insecure --join=db1:26357,db2:26357,db3:26357 && sleep 2 && ./cockroach --host=db1:26357 init --insecure
+  
+  db2:
+    image: cockroachdb/cockroach:v23.1.12
+    container_name: db2
+    ports:
+      - 20002:26357
+      - 8082:8081
+      - 25002:26258
+    command: start --advertise-addr=db2:26357 --http-addr=db2:8081 --listen-addr=db2:26357 --sql-addr=db2:26258 --insecure --join=db1:26357,db2:26357,db3:26357 && sleep 2 && ./cockroach --host=db1:26357 init --insecure
+    depends_on:
+      - db1
+  
+  db3:
+    image: cockroachdb/cockroach:v23.1.12
+    container_name: db3
+    ports:
+      - 20003:26357
+      - 8083:8081
+      - 25003:26258
+    command: start --advertise-addr=db3:26357 --http-addr=db3:8081 --listen-addr=db3:26357 --sql-addr=db3:26258 --insecure --join=db1:26357,db2:26357,db3:26357 && sleep 2 && ./cockroach --host=db1:26357 init --insecure
+    depends_on:
+      - db1
