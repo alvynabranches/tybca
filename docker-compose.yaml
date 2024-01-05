@@ -13,19 +13,25 @@ services:
       - 5000:8000
     volumes:
       - ./:/app
+    depends_on:
+      - db1
+      - db2
+      - db3
   
   db1:
     image: cockroachdb/cockroach:v23.1.12
     container_name: db1
+    hostname: db1
     ports:
-      - 20001:26357
+      - 26357:26357
       - 8081:8081
-      - 25001:26258
+      - 26258:26258
     command: start --advertise-addr=db1:26357 --http-addr=db1:8081 --listen-addr=db1:26357 --sql-addr=db1:26258 --insecure --join=db1:26357,db2:26357,db3:26357 && sleep 2 && ./cockroach --host=db1:26357 init --insecure
   
   db2:
     image: cockroachdb/cockroach:v23.1.12
     container_name: db2
+    hostname: db2
     ports:
       - 20002:26357
       - 8082:8081

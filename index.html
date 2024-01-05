@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="output"></div>
+    <button id="click" onclick="get()">Get Output</button>
+    <script>
+        async function get(){
+            data = await fetch("http://0.0.0.0:5000", {"method": "GET"});
+            out = await data.json();
+            document.getElementById("output").textContent = out.url;
+            console.log(data);
+        }
+    </script>
+</body>
+</html>

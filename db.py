@@ -5,9 +5,9 @@ from sqlalchemy.ext.asyncio import create_async_engine
 
 USERNAME = os.environ.get("USERNAME", "root")
 PASSWORD = os.environ.get("PASSWORD", "")
-DATABASE = os.environ.get("DATABASE", "defaultdb")
-HOST = os.environ.get("HOST", "db1")
-PORT = int(os.environ.get("PORT", "25357"))
+DATABASE = os.environ.get("DATABASE", "tiatr")
+HOST = os.environ.get("HOST", "0.0.0.0")
+PORT = int(os.environ.get("PORT", "26258"))
 
 SQLALCHEMY_DATABASE_URL = URL.create(
     "cockroachdb",
@@ -16,7 +16,7 @@ SQLALCHEMY_DATABASE_URL = URL.create(
     host=HOST,
     port=PORT,
     database=DATABASE,
-    query={"disable_cockroachdb_telemetry": "False"},
+    # query={"disable_cockroachdb_telemetry": "False"},
 )
 
 SQLALCHEMY_DATABASE_ASYNC_URL = URL.create(
@@ -26,7 +26,7 @@ SQLALCHEMY_DATABASE_ASYNC_URL = URL.create(
     host=HOST,
     port=PORT,
     database=DATABASE,
-    query={"disable_cockroachdb_telemetry": "False"},
+    # query={"disable_cockroachdb_telemetry": "False"},
 )
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True, future=True)
@@ -35,10 +35,10 @@ async_engine = create_async_engine(
 )
 
 def create_tables():
-    from models.booking import Booking, Payment
+    from models.user import User, Admin
     from models.hall import Hall, Seat
     from models.tiatr import Tiatr, Show
-    from models.user import User, Admin
+    from models.booking import Booking, Payment
     
     SQLModel.metadata.create_all(engine)
 
