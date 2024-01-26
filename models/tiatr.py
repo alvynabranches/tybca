@@ -10,7 +10,8 @@ class StatusOption(Enum):
 class Tiatr(SQLModel, table=True):
     id: int = Field(primary_key=True)
     name: str
-    amount: int | float
+    description: str
+    image: str
     
 class Show(SQLModel, table=True):
     id: int = Field(primary_key=True)
@@ -19,4 +20,5 @@ class Show(SQLModel, table=True):
     date: d
     time: t
     status: str = StatusOption.on_time
+    amount: float
     

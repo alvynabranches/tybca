@@ -7,10 +7,4 @@ class User(SQLModel, table=True):
     email: str
     phone: int
     hash: str
-    
-class Admin(SQLModel, table=True):
-    __table_args__ = (UniqueConstraint("username"),)
-    id: int = Field(primary_key=True)
-    username: str
-    hash: str
-    phone: int
+    usertype: str
