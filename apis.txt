@@ -1,0 +1,23 @@
+/user/register         - POST - 
+/user/login            - POST - 
+/user/feedback         - POST - 
+/user/booking          - POST - 
+
+/tiatr                 - GET  - Done
+/tiatr/<id>            - GET  - 
+
+/admin/users           - GET  - 
+/admin/user            - GET  - 
+/admin/login           - GET  - 
+/admin/feedback        - GET  - 
+/admin/tiatr/show      - GET  - 
+/admin/booking         - GET  - 
+/admin/hall            - GET  - 
+/admin/hall            - POST - 
+/admin/hall            - PUT  - 
+/admin/hall/seat       - GET  - 
+/admin/hall/seat       - POST - 
+/admin/tiatr/          - POST - 
+/admin/tiatr/show      - GET  - 
+/admin/tiatr/show/<id> - GET  - 
+/admin/tiatr/show/seat - POST - 
