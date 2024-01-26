@@ -1,23 +1,26 @@
-/user/register         - POST - 
-/user/login            - POST - 
-/user/feedback         - POST - 
-/user/booking          - POST - 
+/user/register    - POST   - 
+/user/login       - POST   - 
+/user/feedback    - POST   - 
+/user/booking     - POST   - 
 
-/tiatr                 - GET  - Done
-/tiatr/<id>            - GET  - 
+/tiatr            - GET    - DONE
+/tiatr/<id>       - GET    - DONE
+/tiatr/           - POST   - DONE
+/tiatr/show       - GET    - DONE
+/tiatr/show/<id>  - GET    - DONE
+/tiatr/show/      - POST   - DONE
+/tiatr/show/      - PUT    - DONE
+/tiatr/show/      - DELETE - DONE
 
-/admin/users           - GET  - 
-/admin/user            - GET  - 
-/admin/login           - GET  - 
-/admin/feedback        - GET  - 
-/admin/tiatr/show      - GET  - 
-/admin/booking         - GET  - 
-/admin/hall            - GET  - 
-/admin/hall            - POST - 
-/admin/hall            - PUT  - 
-/admin/hall/seat       - GET  - 
-/admin/hall/seat       - POST - 
-/admin/tiatr/          - POST - 
-/admin/tiatr/show      - GET  - 
-/admin/tiatr/show/<id> - GET  - 
-/admin/tiatr/show/seat - POST - 
+/hall             - GET    - DONE
+/hall/<id>        - GET    - DONE
+/hall             - POST   - DONE
+/hall             - PUT    - DONE
+/hall/seat        - GET    - DONE
+/hall/seat        - POST   - DONE
+
+/admin/user       - GET    - 
+/admin/user/<id>  - GET    - 
+/admin/login      - GET    - 
+/admin/feedback   - GET    - 
+/admin/booking    - GET    - 
